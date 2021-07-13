@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import Expenses from "../components/Expenses";
 
@@ -27,9 +28,18 @@ function App() {
 
   return (
     <div className="App">
+      <h2>Expenses List </h2>
       <Expenses items={expenseList} />
     </div>
   );
+
+  //in fundal React foloseste aceste metode pt a crea elementele -> varianta pe care React o foloseste 'behind the stage'
+  // return React.createElement(
+  //   "div",
+  //   { className: "App" },
+  //   React.createElement("h2", {}, "Expenses List"),
+  //   React.createElement(Expenses, { items: expenseList })
+  // );
 }
 
 export default App;
