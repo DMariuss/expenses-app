@@ -7,9 +7,9 @@ const expenseCalendar = (props) => {
 
   return (
     <div className={classes.calendar}>
-      <div>{month}</div>
-      <div>{year}</div>
-      <div>{date}</div>
+      <div className={classes.calendar__month}>{month}</div>
+      <div className={classes.calendar__year}>{year}</div>
+      <div className={classes.calendar__date}>{date}</div>
     </div>
   );
 };
