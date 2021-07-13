@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ExpenseItem from "../components/ExpenseItem/ExpenseItem";
+import Expenses from "../components/Expenses";
 
 import "./App.scss";
 
@@ -25,17 +25,11 @@ function App() {
     },
   ]);
 
-  //parcurg lista cu cheltuielile si creez un vector in care am JSX cu fiecare componenta -> le voi randa in APP
-  const expenses = expenseList.map((item) => (
-    <ExpenseItem
-      key={item.id}
-      name={item.name}
-      cost={item.price}
-      date={item.date}
-    />
-  ));
-
-  return <div className="App">{expenses}</div>;
+  return (
+    <div className="App">
+      <Expenses items={expenseList} />
+    </div>
+  );
 }
 
 export default App;

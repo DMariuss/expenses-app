@@ -3,15 +3,15 @@ $font_color_price: white;
 $font_color_description: white;
 
 .expense_item {
-  width: 80%;
+  // width: 95%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 1rem;
   box-shadow: 2px 2px 13px 0px rgba(0, 0, 0, 0.64);
   padding: 0.5rem;
-  margin: 1rem auto;
-  background-color: #282c34;
+  margin: 0.8rem 0;
+  background-color: rgb(49, 49, 49);
 
   &__description {
     margin: 0.5rem 1.2rem;

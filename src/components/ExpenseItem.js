@@ -1,7 +1,7 @@
 // import React from "react"; //se pare ca nu mai este nevoie sa declar acest import
 
 // In aceasta componenta voi afisa cheltuielile
-import ExpenseDate from "../ExpenseDate/ExpenseDate";
+import ExpenseDate from "./ExpenseDate";
 import classes from "./ExpenseItem.module.scss";
 
 function expenseItem(props) {
