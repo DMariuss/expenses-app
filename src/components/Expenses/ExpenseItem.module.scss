@@ -1,0 +1,60 @@
+$price_bkg: #9d0208;
+$font_color_price: white;
+$font_color_description: white;
+
+.expense_item {
+  // width: 95%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  margin: 0.8rem 0;
+  background-color: rgb(49, 49, 49);
+
+  &__description {
+    margin: 0.5rem 1.2rem;
+    color: red;
+    display: flex;
+    //flex-flow -> 2 parametrii: directia si wrap (wrap; no-wrap; wrap-reverse)
+    flex-flow: column-reverse;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    flex: 1;
+
+    > h2 {
+      font-size: 1.1rem;
+      margin: 0 1rem;
+    }
+  }
+
+  &__price {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $font_color_price;
+    padding: 0.7rem;
+    background-color: $price_bkg;
+    border: 1px solid white;
+    border-radius: 0.4rem;
+  }
+}
+
+@media screen and (min-width: 580px) {
+  .expense_item {
+    &__description {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      // flex-flow: row;
+
+      > h2 {
+        font-size: 1.4rem;
+      }
+    }
+
+    &__price {
+      font-size: 1.3rem;
+      padding: 0.7rem 1.6rem;
+    }
+  }
+}

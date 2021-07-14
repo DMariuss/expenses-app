@@ -13,3 +13,12 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+/* Am mutat aici toate clasele generale */
+
+/* clasa ce va fi atribuita tuturor containeelor */
+.container {
+  width: Max(319px, 90%);
+  padding: 0.8rem;
+  margin: 2rem auto;
+}

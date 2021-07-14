@@ -1,6 +1,6 @@
-import React from "react";
-import { useState } from "react";
-import Expenses from "../components/Expenses";
+import React, { useState } from "react";
+import Expenses from "../components/Expenses/Expenses";
+import ExpenseInput from "../components/ExpenseInput/ExpenseInput";
 
 import "./App.scss";
 
@@ -26,9 +26,20 @@ function App() {
     },
   ]);
 
+  //creez aici functia de va prelua datele unei noi componente cu cheltuieli
+  const addExpenseData = (expense) => {
+    //creez o copie a datelor principale -> date imuabile !!!!
+    const newExpenseList = [...expenseList];
+    //adaug noile intrari
+    newExpenseList.push(expense);
+
+    //updatez starea ce contine lista cu cheltuieli
+    setExpenseList(newExpenseList);
+  };
+
   return (
     <div className="App">
-      <h2>Expenses List </h2>
+      <ExpenseInput onAddExpense={addExpenseData} />
       <Expenses items={expenseList} />
     </div>
   );

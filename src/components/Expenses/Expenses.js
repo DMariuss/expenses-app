@@ -1,12 +1,12 @@
 //I will create a component that will hold all the ExpenseItem components
 
 import ExpenseItem from "./ExpenseItem";
-import Card from "./Card";
-import classes from "./Expenses.module.scss";
+import Card from "../General_UI/Card";
+import "./Expenses.scss";
 
-function expenses(props) {
+function Expenses(props) {
   return (
-    <Card className={classes.expenses}>
+    <Card className="expenses container">
       {props.items.map((item) => (
         <ExpenseItem
           key={item.id}
@@ -19,4 +19,4 @@ function expenses(props) {
   );
 }
 
-export default expenses;
+export default Expenses;

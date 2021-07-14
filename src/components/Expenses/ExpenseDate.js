@@ -1,6 +1,6 @@
 import classes from "./ExpenseDate.module.scss";
 
-const expenseCalendar = (props) => {
+const ExpenseCalendar = (props) => {
   const month = props.date.toLocaleString("en-GB", { month: "long" });
   const date = props.date.toLocaleString("en-GB", { day: "2-digit" });
   const year = props.date.getFullYear();
@@ -14,4 +14,4 @@ const expenseCalendar = (props) => {
   );
 };
 
-export default expenseCalendar;
+export default ExpenseCalendar;
