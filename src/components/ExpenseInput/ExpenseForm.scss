@@ -24,6 +24,11 @@ $button_bkg_hover: #be252a;
       padding: 0.3rem;
       border: 1px solid #ccc;
       border-radius: 0.3em;
+      outline: none;
+
+      &:focus {
+        box-shadow: 0 0 3pt 2pt rgba(206, 50, 63, 0.904);
+      }
     }
   }
 
