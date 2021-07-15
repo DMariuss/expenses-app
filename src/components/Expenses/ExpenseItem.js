@@ -8,14 +8,16 @@ import classes from "./ExpenseItem.module.scss";
 
 function ExpenseItem(props) {
   return (
-    <Card className={classes.expense_item}>
-      {/* <p>{props.date}</p> */}
-      <ExpenseDate date={props.date} />
-      <div className={classes.expense_item__description}>
-        <h2>{props.name}</h2>
-        <div className={classes.expense_item__price}>${props.cost}</div>
-      </div>
-    </Card>
+    <li>
+      <Card className={classes.expense_item}>
+        {/* <p>{props.date}</p> */}
+        <ExpenseDate date={props.date} />
+        <div className={classes.expense_item__description}>
+          <h2>{props.name}</h2>
+          <div className={classes.expense_item__price}>${props.cost}</div>
+        </div>
+      </Card>
+    </li>
   );
 }
 
