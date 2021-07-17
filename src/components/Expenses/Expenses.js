@@ -9,70 +9,29 @@ import ExpensesChart from "./ExpenseChart";
 import "./Expenses.scss";
 
 function Expenses(props) {
-  const [filteredYear, setFilteredYear] = useState("2021");
-  const [filtered, setFiltered] = useState(false);
+  const [filteredYear, setFilteredYear] = useState("total");
 
   const selectedYearHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
-
-    //in cazul in care vreau sa filtrez in functie de an
-    setFiltered(true);
   };
 
-  //lista cheltuielilor nefiltrata => total
-  // const nonFilteredList = props.items.map((item) => (
-  //   <ExpenseItem
-  //     key={item.id}
-  //     name={item.name}
-  //     cost={item.price}
-  //     date={item.date}
-  //   />
-  // ));
-  //lista cheltuielilor filtrata
-  // const filteredList = props.items
-  //   .filter((item) => item.date.getFullYear().toString() === filteredYear)
-  //   .map((item) => (
-  //     <ExpenseItem
-  //       key={item.id}
-  //       name={item.name}
-  //       cost={item.price}
-  //       date={item.date}
-  //     />
-  //   ));
+  // logica filtrarii o implementez aici si trimit lista spre a fi randata in ExpenseList
 
-  // !!!!!!!!!!!!!!! VARIANTA FINALA => cea mai buna si clara varianta
-  // let expensesContent = props.items.map((item) => (
-  //   <ExpenseItem
-  //     key={item.id}
-  //     name={item.name}
-  //     cost={item.price}
-  //     date={item.date}
-  //   />
-  // ));
+  // let sentList;
+  // if (filteredYear === "total") {
+  //   sentList = props.items;
+  // } else {
+  //   sentList = props.items.filter(
+  //     (item) => item.date.getFullYear().toString() === filteredYear
+  //   );
+  // }  -------> alternativa
 
-  // in cazul in care vreau sa filtrez suprascriu variabila
-  // if (filtered) {
-  //   expensesContent = props.items
-  //     .filter((item) => item.date.getFullYear().toString() === filteredYear)
-  //     .map((item) => (
-  //       <ExpenseItem
-  //         key={item.id}
-  //         name={item.name}
-  //         cost={item.price}
-  //         date={item.date}
-  //       />
-  //     ));
-  //in cazul in care nu lista mea este goala afisez acest element
-  // if (expensesContent.length === 0) {
-  //   expensesContent = <p>NIMIC AICI</p>;
-  // }
-  // }
-
-  //o varianta ar fi sa pun aici un element -> imi da un avertisment -> trebuie sa pun un identificator unic pe element int-o lista -> pot ignora asta
-  // o alta varianta ar fi sa pun conditie in return -> si asta o sa si folosesc
-  // if (filteredList.length === 0) {
-  //   filteredList.push(<p>Nu ai nimic aici</p>);
-  // }
+  let sentList =
+    filteredYear === "total"
+      ? props.items
+      : props.items.filter(
+          (item) => item.date.getFullYear().toString() === filteredYear
+        );
 
   return (
     <Card className="expenses container">
@@ -81,7 +40,7 @@ function Expenses(props) {
         selectedYear={filteredYear}
       />
 
-      {/* <ExpensesChart expensesList={props.items} />  */}
+      <ExpensesChart expenses={sentList} />
 
       {/* in functie de variabila 'filtered' randez una din cele doua liste cu cheltuieli */}
       {/* {filtered ? filteredList : nonFilteredList} */}
@@ -89,11 +48,7 @@ function Expenses(props) {
       {/* {expensesContent} */}
 
       {/* Varianta in care am o componenta specifica acestei operatii -> am mutat logica in aceasta componenta*/}
-      <ExpensesList
-        expenses={props.items}
-        isFiltered={filtered}
-        selectedYear={filteredYear}
-      />
+      <ExpensesList expenses={sentList} />
     </Card>
   );
 }

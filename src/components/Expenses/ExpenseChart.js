@@ -17,10 +17,10 @@ const ExpenseChart = (props) => {
     { label: "Nov", value: 0 },
     { label: "Dec", value: 0 },
   ];
-  //props.expensesList = [{name: , price: , date: }, {same structure as first}, {same structure as first}, ...etc]
+  //props.expenses = [{name: , price: , date: }, {same structure as first}, {same structure as first}, ...etc]
   // props.expenseList.forEach( expenseItem => { chartDataPoints[expenseItem.date.getMonth()].value += expenseItem.price} )
 
-  for (let expense of props.expensesList) {
+  for (let expense of props.expenses) {
     chartDataPoints[expense.date.getMonth()].value += expense.price; // Jan => 0
   }
 
