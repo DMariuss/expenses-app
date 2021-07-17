@@ -45,12 +45,15 @@ const ExpenseForm = (props) => {
     //si extrag valorile intr-un obiect
     const enteredInput = {
       name: nameInput,
-      price: priceInput,
+      price: +priceInput, // + pt a-l transforma in 'type number'
       date: new Date(dateInput),
     };
 
     //pt a trimite date/stari de la componentele copil la cele parinte va trebui sa apelam aici o functie definita in comp. parinte, cu argumente din comp. copil
     props.onSaveExpenseData(enteredInput);
+    //dupa ce trimit datele pt a fi salvate, inlatur formularul -> o alta varianta era sa apelez direct functia 'setShowExpenseForm' in functia ce-mi prelua datele
+    //                                                      direct in ExpenseInput
+    props.onCancel();
 
     //dupa executarea codului la submit voi reseta campurile intrarilor
     setNameInput("");
@@ -99,7 +102,16 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="expense-input__action">
-        <button type="submit">Add expense</button>
+        <button
+          className="expense-input__btn"
+          type="button"
+          onClick={props.onCancel}
+        >
+          Cancel
+        </button>
+        <button className="expense-input__btn" type="submit">
+          Add Expense
+        </button>
       </div>
     </form>
   );

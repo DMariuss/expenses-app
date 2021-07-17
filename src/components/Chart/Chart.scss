@@ -1,0 +1,11 @@
+.chart {
+  display: flex;
+  justify-content: space-around;
+  // calculez latimea pt ca am padding-ul dat de container + tin cont de marginea negativa a filtrului
+  width: calc(100% + 0.8rem * 2);
+  margin: -0.8rem;
+  margin-bottom: 0.8rem;
+  padding: 1rem;
+  height: MIN(30vh, 12rem);
+  background-color: #505152;
+}

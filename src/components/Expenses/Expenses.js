@@ -4,6 +4,8 @@ import { useState } from "react";
 import Card from "../General_UI/Card";
 import ExpensesFilter from "./ExpenseFilter";
 import ExpensesList from "./ExpensesList";
+import ExpensesChart from "./ExpenseChart";
+
 import "./Expenses.scss";
 
 function Expenses(props) {
@@ -78,6 +80,9 @@ function Expenses(props) {
         onChangeFilter={selectedYearHandler}
         selectedYear={filteredYear}
       />
+
+      {/* <ExpensesChart expensesList={props.items} />  */}
+
       {/* in functie de variabila 'filtered' randez una din cele doua liste cu cheltuieli */}
       {/* {filtered ? filteredList : nonFilteredList} */}
       {/* {filteredList.length === 0 && <p>NIMIC AICI !!!!</p>} */}

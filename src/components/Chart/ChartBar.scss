@@ -1,0 +1,33 @@
+.chart-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 100%;
+
+  &__inner {
+    background-color: #757575;
+    height: 100%;
+    width: 1.2rem;
+    border: 1px solid #313131;
+    border-radius: 1rem;
+    overflow: hidden;
+
+    //pt a impinge elementul interior(ce va 'umple' elementul pt diagrama) declar asa
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &__fill {
+    width: 100%;
+    //height -> va fi setat pe fiecare element in functie de procentaj din JS
+    background-color: #9d0208;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &__label {
+    font-weight: 800;
+    font-size: 0.7rem;
+    text-align: center;
+  }
+}

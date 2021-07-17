@@ -34,19 +34,21 @@ $button_bkg_hover: #be252a;
 
   &__action {
     margin: 0.5rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+  &__btn {
+    padding: 0.5rem;
+    margin-left: 2rem;
+    border-radius: 0.5rem;
+    background-color: $button_bkg;
+    color: white;
+    cursor: pointer;
 
-    button {
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-      background-color: $button_bkg;
-      color: white;
-      cursor: pointer;
-
-      &:hover,
-      &:active,
-      &:focus {
-        background-color: $button_bkg_hover;
-      }
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: $button_bkg_hover;
     }
   }
 }
