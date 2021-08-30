@@ -21,6 +21,7 @@ const ExpenseChart = (props) => {
   // props.expenseList.forEach( expenseItem => { chartDataPoints[expenseItem.date.getMonth()].value += expenseItem.price} )
 
   for (let expense of props.expenses) {
+    //actualizez valoarea pe fiecare luna adaugand suma articolului gasit asociat lunii respective
     chartDataPoints[expense.date.getMonth()].value += expense.price; // Jan => 0
   }
 

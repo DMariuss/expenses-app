@@ -43,12 +43,19 @@ function App() {
   //creez aici functia de va prelua datele unei noi componente cu cheltuieli
   const addExpenseData = (expense) => {
     //creez o copie a datelor principale -> date imuabile !!!!
-    // const newExpenseList = [...expenseList];
+    // const newExpenseList = [...expenseList];                   <---- nu tine cont de previous State
     //adaug noile intrari -> la inceputul listei
     // newExpenseList.unshift(expense);
 
     //updatez starea ce contine lista cu cheltuieli
     // setExpenseList(newExpenseList);
+
+    // VARIANTA prelucrata a celei de mai sus, dar care tine cont de vechea stare    <-- tine cont de previous State
+    // setExpenseList(prevList => {
+    //   const newList = [...prevList];
+    //   newList.unshift(expense);
+    //   return newList;
+    // })
 
     // O VARIANTA MAI RAPIDA:   --- nu uita ca depinde de ultima stare -> asa ca folosesc callback
     setExpenseList((prevState) => {
