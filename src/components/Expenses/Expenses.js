@@ -48,7 +48,7 @@ function Expenses(props) {
       {/* {expensesContent} */}
 
       {/* Varianta in care am o componenta specifica acestei operatii -> am mutat logica in aceasta componenta*/}
-      <ExpensesList expenses={sentList} />
+      <ExpensesList expenses={sentList} onDelete={props.onDelete} />
     </Card>
   );
 }

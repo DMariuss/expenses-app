@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Expenses from "../components/Expenses/Expenses";
 import ExpenseInput from "../components/ExpenseInput/ExpenseInput";
 
@@ -37,10 +37,37 @@ const EXPENSES_TEST = [
   },
 ];
 
+// functie pt a prelua datele din localStorage si a le adauga direct in starea cu 'expenseList' pt a nu mai astepta o rulare a unui useEffect pt a aplica asta
+const retrieveExpenses = () => {
+  const savedList = localStorage.getItem("expenses");
+
+  if (savedList) {
+    // parsez lista salvata in localStorage
+    const parsedSavedList = JSON.parse(savedList);
+
+    //transform datele din string(le-a convertit automat) inapoi in tip de data Date
+    const transformedList = parsedSavedList.map((expense) => ({
+      ...expense,
+      date: new Date(expense.date),
+    }));
+
+    return transformedList;
+  } else {
+    return null;
+  }
+};
+
+// const EXPENSES_TEST = [];
 function App() {
-  const [expenseList, setExpenseList] = useState(EXPENSES_TEST);
+  const renderedExpensesList = retrieveExpenses()
+    ? retrieveExpenses()
+    : EXPENSES_TEST;
+
+  const [expenseList, setExpenseList] = useState(renderedExpensesList);
 
   //creez aici functia de va prelua datele unei noi componente cu cheltuieli
+
+  // 🢣 adaug o noua cheltuiala in lista
   const addExpenseData = (expense) => {
     //creez o copie a datelor principale -> date imuabile !!!!
     // const newExpenseList = [...expenseList];                   <---- nu tine cont de previous State
@@ -63,10 +90,52 @@ function App() {
     });
   };
 
+  // 🢣 inlatur o anume cheltuiala
+  const deleteExpense = (id) => {
+    // filtrez intreaga lista pt a inlatura un element
+    const updatedList = expenseList.filter((expense) => expense.id !== id);
+
+    setExpenseList(updatedList);
+  };
+
+  // 🢣 acesta va prelua datele salvate in local storage    **************** mutate in functia de mai sus pt eficientizarea codului
+  // useEffect(() => {
+  //   console.log("in 2useEffect ", expenseList);
+
+  //   const savedList = localStorage.getItem("expenses");
+
+  //   if (savedList) {
+  //     // parsez lista salvata in localStorage
+  //     const parsedSavedList = JSON.parse(savedList);
+  //     //transform datele din string(le-a convertit automat) inapoi in tip de data Date
+  //     const transformedList = parsedSavedList.map((expense) => ({
+  //       ...expense,
+  //       date: new Date(expense.date),
+  //     }));
+
+  //     setExpenseList(transformedList);
+  //   }
+  // }, []); // 🢣 🢣 🢣 Problema: la salvare in localStorage tipul de data 'Date' se va converti in string si la parsare o sa am .date de tip string
+  // 🢣 🢣 🢣 Solutie: il reconvertesc
+
+  // 🢣 acesta va scrie datele in local storage
+  useEffect(() => {
+    console.log("in 1useEffect ", expenseList);
+    //transform datele intr-un obiect de tip json
+    const savedList = JSON.stringify(expenseList);
+
+    //scriu datele in storage
+    localStorage.setItem("expenses", savedList);
+
+    if (expenseList.length <= 0) {
+      localStorage.removeItem("expenses");
+    }
+  }, [expenseList]);
+
   return (
     <div className="App">
       <ExpenseInput onAddExpense={addExpenseData} />
-      <Expenses items={expenseList} />
+      <Expenses items={expenseList} onDelete={deleteExpense} />
     </div>
   );
 

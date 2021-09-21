@@ -10,9 +10,11 @@ const ExpensesList = (props) => {
   const expensesContent = props.expenses.map((item) => (
     <ExpenseItem
       key={item.id}
+      id={item.id}
       name={item.name}
       cost={item.price}
       date={item.date}
+      onDelete={props.onDelete}
     />
   ));
 
